@@ -1,12 +1,32 @@
-name: 'Container Action Template'
-description: 'Get started with Container actions'
-author: 'GitHub'
+name: 'Update Deployment Repo Action'
+description: 'Update the image tag in a deployment repo using Kustomize.'
+author: 'Kubestack'
 inputs: 
-  myInput:
-    description: 'Input to use'
-    default: 'world'
+  deployment_repo_url:
+    description: 'Repository to commit to.'
+    required: true
+  deployment_repo_branch:
+    description: 'Branch in the repository to commit to.'
+    required: true
+  kustomization_path:
+    description: 'Path to the Kustomization inside the repo.'
+    required: true
+  kustomization_images:
+    description: 'Args to pass to `kustomize edit set image`.'
+    required: true
+  deploy_key:
+    description: 'Base64 encoded private key of a read/write deploy-key.'
+    required: true
+  git_user_name:
+    description: 'Git user.name to use for the commit.'
+    default: 'GitHub Actions'
+    required: false
+  git_user_email:
+    description: 'Git user.email to use for the commit.'
+    default: 'actions@users.noreply.github.com'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.myInput }}
+  - ${{ inputs.kustomization_images }}
