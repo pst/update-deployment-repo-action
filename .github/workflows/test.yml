@@ -1,0 +1,26 @@
+name: Test Action
+
+on:
+  push:
+    branches:
+    - "*"
+    - "!test-target"  # run for all branches but test-target
+    tags:
+    - "*"  # run for tags
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 'Checkout'
+      uses: actions/checkout@v1
+
+    - name: 'Update deployment repo'
+      uses: ./
+      with:
+        deployment_repo_url: git@github.com:pst/update-deployment-repo-action.git
+        deployment_repo_branch: test-target
+        kustomization_path: test-kustomization
+        kustomization_images: nginx:${{ github.sha }}
+        deploy_key: ${{ secrets.TEST_DEPLOY_KEY_PRIVATE }}
