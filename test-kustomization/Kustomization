@@ -4,4 +4,4 @@ images:
 - name: asd
   newTag: "123"
 - name: nginx
-  newTag: 089623c93f7ee73adf91802d0c408246585faa74
+  newTag: 6392b4ab69ea8a004ed7a6ec762f71f6b4cea160
