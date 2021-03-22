@@ -4,4 +4,4 @@ images:
 - name: asd
   newTag: "123"
 - name: nginx
-  newTag: "123456"
+  newTag: test
