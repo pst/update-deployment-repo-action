@@ -2,4 +2,4 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 images:
 - name: nginx
-  newTag: ee1c8bc0fce121da319a1b91017f803455be6276
+  newTag: 36e4ee78e52e035b3020a5bf0cb5a28566dd07b5
