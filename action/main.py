@@ -49,10 +49,9 @@ if __name__ == '__main__':
 
     ssh_dir = os.path.expanduser('~/.ssh')
     git_ssh_identity_file = os.path.join(ssh_dir, 'id_rsa')
-    known_hosts_file = os.path.join(ssh_dir, 'known_hosts')
+    known_hosts_file = os.path.join(os.path.dirname(__file__), 'known_hosts')
 
     os.makedirs(ssh_dir, mode=0x600, exist_ok=True)
-    copyfile('action/known_hosts', known_hosts_file)
 
     with open(os.open(git_ssh_identity_file, os.O_CREAT | os.O_WRONLY, 0o600), 'w') as id_rsa:
         id_rsa.write(base64.standard_b64decode(deploy_key).decode("utf-8"))
