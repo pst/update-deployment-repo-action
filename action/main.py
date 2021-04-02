@@ -80,6 +80,11 @@ if __name__ == '__main__':
                 logging.info(krun.args)
                 logging.error(krun.stderr.strip().decode("UTF-8"))
                 exit(krun.returncode)
+
+            if not repo.is_dirty():
+                logging.info('No changes to commit')
+                exit(0)
+
             logging.info(repo.git.diff())
 
             repo.git.add(cwd)
