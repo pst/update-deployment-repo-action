@@ -24,3 +24,13 @@ jobs:
         kustomization_path: test-kustomization
         kustomization_images: nginx:${{ github.sha }}
         deploy_key: ${{ secrets.TEST_DEPLOY_KEY_PRIVATE }}
+
+    # Ensure the action does not error when there are no changes
+    - name: 'Update deployment repo again'
+      uses: ./
+      with:
+        deployment_repo_url: git@github.com:pst/update-deployment-repo-action.git
+        deployment_repo_branch: test-target
+        kustomization_path: test-kustomization
+        kustomization_images: nginx:${{ github.sha }}
+        deploy_key: ${{ secrets.TEST_DEPLOY_KEY_PRIVATE }}
